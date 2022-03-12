@@ -305,24 +305,24 @@ $(".filter-bar").onclick = (e) => {
       if (classNameArr[0] === "name") {
         switch (classNameArr[1]) {
           case "increase": {
-            renderProductData = productData
+            renderProductData = renderProductData
               .slice(0)
               .sort((a, b) => a.name.localeCompare(b.name));
-            console.log(renderProductData);
             renderProductlist(renderProductData);
             break;
           }
           case "decrease": {
-            renderProductData = productData
+            renderProductData = renderProductData
               .slice(0)
               .sort((a, b) => -a.name.localeCompare(b.name));
-            console.log(renderProductData);
             renderProductlist(renderProductData);
             break;
           }
 
           default:
-            renderProductData = productData.slice(0);
+            renderProductData = renderProductData
+              .slice(0)
+              .sort((a, b) => a.id - b.id);
             renderProductlist(renderProductData);
             break;
         }
@@ -333,24 +333,24 @@ $(".filter-bar").onclick = (e) => {
         console.log("price");
         switch (classNameArr[1]) {
           case "increase": {
-            renderProductData = productData
+            renderProductData = renderProductData
               .slice(0)
               .sort((a, b) => a.price - b.price);
-            console.log(renderProductData);
             renderProductlist(renderProductData);
             break;
           }
           case "decrease": {
-            renderProductData = productData
+            renderProductData = renderProductData
               .slice(0)
               .sort((a, b) => -(a.price - b.price));
-            console.log(renderProductData);
             renderProductlist(renderProductData);
             break;
           }
 
           default:
-            renderProductData = productData.slice(0);
+            renderProductData = renderProductData
+              .slice(0)
+              .sort((a, b) => a.id - b.id);
             renderProductlist(renderProductData);
             break;
         }
