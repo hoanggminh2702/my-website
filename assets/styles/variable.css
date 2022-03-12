@@ -9,7 +9,7 @@
     #f62682 -4.45%,
     #6f5cf1 104.12%
   );
-  --main-background: url("../images/background.png");
+  --main-background: url("/assets/images/background.png");
   --font-color: #504f5c;
   --box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
 
@@ -27,4 +27,8 @@
 
   /* Details Background Variable */
   --background-details-color: #f1e2ff;
+
+  /* Login Form Background */
+  --background-form-color: #f1e2ff;
+  --login-btn-color: #e7e0d2;
 }
