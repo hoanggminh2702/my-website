@@ -303,12 +303,12 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .page:hover {
   color: var(--active-color);
   border: 1px solid var(--active-color);
-  cursor: pointer;
 }
 
 .active-page {

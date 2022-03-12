@@ -44,6 +44,34 @@ const productData = [
     des: "Cuốn sách này thực sự đã giúp hàng triệu người trên khắp thế giới tìm ra những giải pháp thành công, ngay cả đối với những vấn đề rắc rối nhất, thử đặt mua và đọc xem, nếu bạn muốn biết cách người thông minh giải quyết vấn đề như thế nào?",
     price: Math.ceil(Math.random() * 10),
   },
+  {
+    id: 7,
+    link: "https://product.hstatic.net/200000123069/product/book1_ntmn__1__85927643bab14b0ab9a82d4d3791a141_master.jpg",
+    name: "Người trong muôn nghề - Tủ sách hướng nghiệp",
+    des: "Cuốn sách này thực sự đã giúp hàng triệu người trên khắp thế giới tìm ra những giải pháp thành công, ngay cả đối với những vấn đề rắc rối nhất, thử đặt mua và đọc xem, nếu bạn muốn biết cách người thông minh giải quyết vấn đề như thế nào?",
+    price: Math.ceil(Math.random() * 10),
+  },
+  {
+    id: 8,
+    link: "https://product.hstatic.net/200000123069/product/book1_ntmn__1__85927643bab14b0ab9a82d4d3791a141_master.jpg",
+    name: "Người trong muôn nghề - Tủ sách hướng nghiệp",
+    des: "Cuốn sách này thực sự đã giúp hàng triệu người trên khắp thế giới tìm ra những giải pháp thành công, ngay cả đối với những vấn đề rắc rối nhất, thử đặt mua và đọc xem, nếu bạn muốn biết cách người thông minh giải quyết vấn đề như thế nào?",
+    price: Math.ceil(Math.random() * 10),
+  },
+  {
+    id: 9,
+    link: "https://product.hstatic.net/200000123069/product/book1_ntmn__1__85927643bab14b0ab9a82d4d3791a141_master.jpg",
+    name: "Người trong muôn nghề - Tủ sách hướng nghiệp",
+    des: "Cuốn sách này thực sự đã giúp hàng triệu người trên khắp thế giới tìm ra những giải pháp thành công, ngay cả đối với những vấn đề rắc rối nhất, thử đặt mua và đọc xem, nếu bạn muốn biết cách người thông minh giải quyết vấn đề như thế nào?",
+    price: Math.ceil(Math.random() * 10),
+  },
+  {
+    id: 10,
+    link: "https://product.hstatic.net/200000123069/product/book1_ntmn__1__85927643bab14b0ab9a82d4d3791a141_master.jpg",
+    name: "Người trong muôn nghề - Tủ sách hướng nghiệp",
+    des: "Cuốn sách này thực sự đã giúp hàng triệu người trên khắp thế giới tìm ra những giải pháp thành công, ngay cả đối với những vấn đề rắc rối nhất, thử đặt mua và đọc xem, nếu bạn muốn biết cách người thông minh giải quyết vấn đề như thế nào?",
+    price: Math.ceil(Math.random() * 10),
+  },
 ];
 
 var renderProductData = productData.slice(0);
@@ -189,8 +217,10 @@ function renderProductlist(
 var currentPage = 0;
 function genCurrentPage(page) {
   if (page < 0) return 0;
-  if (page > Math.ceil(renderProductData.length / numberOfRecordPerPage))
-    return Math.ceil(renderProductData.length / numberOfRecordPerPage);
+
+  if (page > Math.floor(renderProductData.length / numberOfRecordPerPage))
+    return Math.floor(renderProductData.length / numberOfRecordPerPage);
+
   return page;
 }
 const numberOfRecordPerPage = 4;
@@ -222,42 +252,44 @@ renderProductlist(productData);
 
 $(".pagination-bar").onclick = (e) => {
   if (e.target.closest(".page")) {
-    console.log(e.target.id);
     switch (e.target.id) {
       case "next":
+        currentPage = genCurrentPage(currentPage + 1);
         renderProductlist(
           renderProductData,
           numberOfRecordPerPage,
-          genCurrentPage(currentPage + 1)
+          genCurrentPage(currentPage)
         );
         genPagination(
           renderProductData.length,
           numberOfRecordPerPage,
-          genCurrentPage(currentPage + 1)
+          genCurrentPage(currentPage)
         );
         break;
       case "prev":
+        currentPage = genCurrentPage(currentPage - 1);
         renderProductlist(
           renderProductData,
           numberOfRecordPerPage,
-          genCurrentPage(currentPage - 1)
+          genCurrentPage(currentPage)
         );
         genPagination(
           renderProductData.length,
           numberOfRecordPerPage,
-          genCurrentPage(currentPage - 1)
+          genCurrentPage(currentPage)
         );
         break;
       default:
+        currentPage = e.target.id;
         renderProductlist(
           renderProductData,
           numberOfRecordPerPage,
-          e.target.id
+          currentPage
         );
         genPagination(
           renderProductData.length,
           numberOfRecordPerPage,
-          e.target.id
+          currentPage
         );
     }
   }
