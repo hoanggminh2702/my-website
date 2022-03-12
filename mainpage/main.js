@@ -185,6 +185,14 @@ function renderProductlist(
 
 // Gen pagination
 // Active page = index + 1
+
+var currentPage = 0;
+function genCurrentPage(page) {
+  if (page < 0) return 0;
+  if (page > Math.ceil(renderProductData.length / numberOfRecordPerPage))
+    return Math.ceil(renderProductData.length / numberOfRecordPerPage);
+  return page;
+}
 const numberOfRecordPerPage = 4;
 function genPagination(
   totalProduct,
@@ -201,7 +209,11 @@ function genPagination(
     }">${i + 1}</div>`;
   }
 
-  $(".pagination-bar").innerHTML = paginationString;
+  const nextPageStringHtml = `<div id="next" class="page">></div>`;
+  const prevPageStringHtml = `<div id="prev" class="page"><</div>`;
+
+  $(".pagination-bar").innerHTML =
+    prevPageStringHtml + paginationString + nextPageStringHtml;
 }
 
 genPagination(productData.length);
@@ -210,16 +222,53 @@ renderProductlist(productData);
 
 $(".pagination-bar").onclick = (e) => {
   if (e.target.closest(".page")) {
-    genPagination(renderProductData.length, numberOfRecordPerPage, e.target.id);
-    renderProductlist(renderProductData, numberOfRecordPerPage, e.target.id);
+    console.log(e.target.id);
+    switch (e.target.id) {
+      case "next":
+        renderProductlist(
+          renderProductData,
+          numberOfRecordPerPage,
+          genCurrentPage(currentPage + 1)
+        );
+        genPagination(
+          renderProductData.length,
+          numberOfRecordPerPage,
+          genCurrentPage(currentPage + 1)
+        );
+        break;
+      case "prev":
+        renderProductlist(
+          renderProductData,
+          numberOfRecordPerPage,
+          genCurrentPage(currentPage - 1)
+        );
+        genPagination(
+          renderProductData.length,
+          numberOfRecordPerPage,
+          genCurrentPage(currentPage - 1)
+        );
+        break;
+      default:
+        renderProductlist(
+          renderProductData,
+          numberOfRecordPerPage,
+          e.target.id
+        );
+        genPagination(
+          renderProductData.length,
+          numberOfRecordPerPage,
+          e.target.id
+        );
+    }
   }
 };
 
-// Filter by name
+// Filter
 $(".filter-bar").onclick = (e) => {
   if (e.target.closest(".select-option")) {
     if (e.target.classList[1]) {
       const classNameArr = e.target.classList[1].split("-");
+      // Filter By Name
       if (classNameArr[0] === "name") {
         switch (classNameArr[1]) {
           case "increase": {
@@ -246,6 +295,7 @@ $(".filter-bar").onclick = (e) => {
         }
       }
 
+      // Filter By Price
       if (classNameArr[0] === "price") {
         console.log("price");
         switch (classNameArr[1]) {
