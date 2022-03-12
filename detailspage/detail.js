@@ -6,8 +6,6 @@ if (!localStorage.getItem("choose-product")) {
   window.location.href = "../mainpage/main.html";
 }
 
-console.log(localStorage.getItem("choose-product"));
-
 const chooseProduct = JSON.parse(localStorage.getItem("choose-product"));
 
 function genProductDetails(product) {
@@ -37,9 +35,9 @@ function genProductDetails(product) {
           <div class="product-quantity">
             <h2>Số lượng</h2>
             <div class="control-quantity">
-              <div class="control minus-quantity">-</div>
+              <div class="control minus">-</div>
               <div class="quantity">1</div>
-              <div class="control plus-quantity">+</div>
+              <div class="control plus">+</div>
             </div>
           </div>
         </div>
@@ -54,3 +52,19 @@ if (chooseProduct) {
 } else {
   window.location.href = "../mainpage/main.html";
 }
+
+$(".control-quantity").onclick = (e) => {
+  if (e.target.closest(".control")) {
+    var curQuantity = Number($(".quantity").innerHTML);
+
+    switch (e.target.classList[1]) {
+      case "minus":
+        $(".quantity").innerHTML = curQuantity > 1 ? curQuantity - 1 : 1;
+        break;
+      case "plus":
+        $(".quantity").innerHTML = curQuantity + 1;
+        break;
+      default:
+    }
+  }
+};

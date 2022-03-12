@@ -30,5 +30,6 @@
 
   /* Login Form Background */
   --background-form-color: #f1e2ff;
+  --form-login-box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
   --login-btn-color: #e7e0d2;
 }
