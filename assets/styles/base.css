@@ -16,6 +16,7 @@ body {
 
 h1,
 p,
-ul {
+ul,
+h2 {
   margin: 0;
 }

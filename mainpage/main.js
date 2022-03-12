@@ -1,5 +1,6 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
+if (localStorage.getItem("choose-product")) {
+  localStorage.removeItem("choose-product");
+}
 
 const productData = [
   {
@@ -355,5 +356,21 @@ $(".filter-bar").onclick = (e) => {
         }
       }
     }
+  }
+};
+
+// Handle Click to product
+$(".product-container").onclick = (e) => {
+  if (e.target.closest(".product-group")) {
+    const chooseProduct = productData.find((product) => {
+      return (
+        product.id ===
+        Number(e.target.closest(".product-group").id.split("-")[1])
+      );
+    });
+
+    localStorage.setItem("choose-product", JSON.stringify(chooseProduct));
+
+    window.location.href = "../detailspage/detail.html";
   }
 };
