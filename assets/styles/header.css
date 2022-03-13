@@ -1,5 +1,4 @@
-@import url(./variable.css);
-@import url(./base.css);
+@import url("./base.css");
 .background-tag {
   position: fixed;
   top: 0;
