@@ -81,7 +81,7 @@ var renderProductData = productData.slice(0);
 function genCustomSelectHTMLString(className, menuName, itemNameArr) {
   return `
           <div class="select${className ? ` ${className}` : ""}">
-            ${menuName}
+            <span>${menuName}</span>
             <div class="select-options">
 
               ${itemNameArr
@@ -308,14 +308,22 @@ $(".filter-bar").onclick = (e) => {
             renderProductData = renderProductData
               .slice(0)
               .sort((a, b) => a.name.localeCompare(b.name));
-            renderProductlist(renderProductData);
+            renderProductlist(
+              renderProductData,
+              numberOfRecordPerPage,
+              currentPage
+            );
             break;
           }
           case "decrease": {
             renderProductData = renderProductData
               .slice(0)
               .sort((a, b) => -a.name.localeCompare(b.name));
-            renderProductlist(renderProductData);
+            renderProductlist(
+              renderProductData,
+              numberOfRecordPerPage,
+              currentPage
+            );
             break;
           }
 
@@ -323,7 +331,11 @@ $(".filter-bar").onclick = (e) => {
             renderProductData = renderProductData
               .slice(0)
               .sort((a, b) => a.id - b.id);
-            renderProductlist(renderProductData);
+            renderProductlist(
+              renderProductData,
+              numberOfRecordPerPage,
+              currentPage
+            );
             break;
         }
       }
@@ -336,14 +348,22 @@ $(".filter-bar").onclick = (e) => {
             renderProductData = renderProductData
               .slice(0)
               .sort((a, b) => a.price - b.price);
-            renderProductlist(renderProductData);
+            renderProductlist(
+              renderProductData,
+              numberOfRecordPerPage,
+              currentPage
+            );
             break;
           }
           case "decrease": {
             renderProductData = renderProductData
               .slice(0)
               .sort((a, b) => -(a.price - b.price));
-            renderProductlist(renderProductData);
+            renderProductlist(
+              renderProductData,
+              numberOfRecordPerPage,
+              currentPage
+            );
             break;
           }
 
@@ -351,7 +371,11 @@ $(".filter-bar").onclick = (e) => {
             renderProductData = renderProductData
               .slice(0)
               .sort((a, b) => a.id - b.id);
-            renderProductlist(renderProductData);
+            renderProductlist(
+              renderProductData,
+              numberOfRecordPerPage,
+              currentPage
+            );
             break;
         }
       }
