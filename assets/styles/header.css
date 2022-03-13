@@ -57,6 +57,7 @@ header {
   width: 100%;
   padding: 8px;
   background-color: var(--input-background-color);
+  box-shadow: var(--box-shadow);
 }
 
 .search-icon {

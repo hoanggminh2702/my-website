@@ -1,7 +1,7 @@
 .container {
   width: 100vw;
   height: 100vh;
-  background-image: var(--main-background);
+  background-image: url(../assets/images/background.png);
   background-size: cover;
   display: flex;
 }
@@ -54,6 +54,7 @@
   border-radius: 4px;
   outline: none;
   padding: 0 6px;
+  box-shadow: var(--input-box-shadow);
 }
 
 .login-btn {
@@ -65,6 +66,7 @@
   font-size: 1rem;
   cursor: pointer;
   color: var(--login-btn-color);
+  box-shadow: var(--btn-box-shadow);
 }
 
 .login-btn:hover {

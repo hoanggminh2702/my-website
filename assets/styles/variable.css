@@ -9,9 +9,9 @@
     #f62682 -4.45%,
     #6f5cf1 104.12%
   );
-  --main-background: url(https://github.com/AikoCute/aikocute/releases/download/0.0.2/Aiko-PNG.png);
+  --main-background: url(../images/background.png);
   --font-color: #504f5c;
-  --box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+  --box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
 
   /* Header Variable */
   --header-height: 75px;
@@ -28,8 +28,17 @@
   /* Details Background Variable */
   --background-details-color: #f1e2ff;
 
-  /* Login Form Background */
+  /* Login Form Variabel */
   --background-form-color: #f1e2ff;
   --form-login-box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
   --login-btn-color: #e7e0d2;
+
+  /* Details variable */
+  --content-details-box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+
+  /* Btn box shadow */
+  --btn-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+
+  /* Input box shadow */
+  --input-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
 }
